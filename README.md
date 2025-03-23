@@ -39,13 +39,13 @@ from langchain_community.llms.fake import FakeListLLM
 from consensus.core import Consensus
 import asyncio
 
-prompt = PromptTemplate.from_template(\"\"\"
+prompt = PromptTemplate.from_template("""
 Q: {question}
 
 {peer_answers}
 
 Please answer as fully and clearly as possible.
-\"\"\")
+""")
 
 llm1 = prompt | FakeListLLM(responses=["Answer A."])
 llm2 = prompt | FakeListLLM(responses=["Answer B."])
@@ -78,17 +78,17 @@ if __name__ == "__main__":
 |ranked    |    Aggregates ranked preferences|
 
 
-## Output:
+## ➡️ Output:
 
-Question: 
+❓ Question: 
 ```
 A single-phase lighting circuit has an installed power of 1,100 VA and runs inside a PVC conduit embedded in a masonry wall. 
 Alongside it, insulated conductors from another circuit are present. The conductors are copper, the ambient temperature is 35°C, and the voltage is 220 V. Determine the conductor's cross-sectional area and the circuit breaker's nominal current for this circuit.
 ```
 
-Answer: `The conductor's cross-sectional area should be 2.5 mm² and the circuit breaker's nominal current should be 10 a.`
+💡 Answer: `The conductor's cross-sectional area should be 2.5 mm² and the circuit breaker's nominal current should be 10 a.`
 
-Reason:
+🗫 Discussion:
 
 ```json
 {
