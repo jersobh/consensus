@@ -45,15 +45,11 @@ llm3 = prompt | ChatOpenAI(model="gpt-4o", api_key=SecretStr(openai_api_key)) | 
 engine = Consensus(
     llms=[llm1, llm2, llm3],
     strategy="majority",
-    rounds=10, # Max number of rounds
+    rounds=None, # Max number of rounds
     enable_peer_feedback=True # peers can see other peers answers
 )
 
-async def run():
-    question = """
-A single-phase lighting circuit has an installed power of 1,100 VA and runs inside a PVC conduit embedded in a masonry wall. 
-Alongside it, insulated conductors from another circuit are present. The conductors are copper, the ambient temperature is 35°C, and the voltage is 220 V. Determine the conductor's cross-sectional area and the circuit breaker's nominal current for this circuit.
-"""
+async def run(question):
     final_answer = await engine.get_consensus(question)
     print("Final consensus answer:")
     print(final_answer)
@@ -61,4 +57,5 @@ Alongside it, insulated conductors from another circuit are present. The conduct
     print(engine.report.to_json())
 
 if __name__ == "__main__":
-    asyncio.run(run())
+    question = sys.argv[1]
+    asyncio.run(run(question))
