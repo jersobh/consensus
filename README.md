@@ -17,6 +17,14 @@
 
 ## 🚀 Installation
 
+Using pip:
+
+```bash
+pip install llm_consensus
+```
+
+from source:
+
 ```bash
 pip install git+https://github.com/jersobh/consensus.git
 ```

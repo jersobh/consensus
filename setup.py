@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="consensus",
+    name="llm_consensus",
     version="0.1.0",
     description="Langchain-compatible deliberation and consensus framework using multiple LLMs.",
     author="Jeff Andrade",
